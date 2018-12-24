@@ -15,9 +15,9 @@ class Problem extends React.Component {
     }
     onProblemChangeHandler = (event) => {
         this.setState({
-            problemTitle = this.props.problem.title,
-            problemKeyWords = this.props.problem.keyWords,
-            problemDescription = this.props.problem.description
+            problemTitle : this.props.problem.title,
+            problemKeyWords : this.props.problem.keyWords,
+            problemDescription : this.props.problem.description
         })
     }
     render() {
