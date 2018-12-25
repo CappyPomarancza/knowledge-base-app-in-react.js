@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
-import Problem from './Problem'
+import Problem from './ProblemList/Problem'
 
 class App extends Component {
   render() {

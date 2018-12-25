@@ -33,7 +33,7 @@ class ProblemsList extends React.Component {
             )
     }
 
-    newProblemChandler = (event) => {
+    newProblemChandlerHandler = (event) => {
         this.setState({
             newProblemTitle: event.target.value,
             newProblemKeyWords: event.target.value,
@@ -41,6 +41,60 @@ class ProblemsList extends React.Component {
         })
     }
 
+    onAddNewProblemClick = () => {
+        const request = {
+            method: 'POST',
+            body: JSON.stringify({
+                title: this.state.newProblemTitle,
+                keyWords: this.state.newProblemKeyWords,
+                description: this.state.newProblemDescription
+            })
+        }
+
+        fetch('https://to-do-list-aceb0.firebaseio.com/cappy-problems/.json',
+            request)
+            .then(response => {
+                this.setState({
+                    newProblemTitle: '',
+                    newProblemDescription: '',
+                    newProblemKeyWords: ''
+                })
+            })
+    }
+    onEditProblemHandler = (key, newTitle) => {
+        database.ref(`cappy-problems/${key}`)
+            .update({
+                title: newTitle
+            })
+    }
+    onShearchPharseChanged = (event) => {
+        this.setState({
+            searchPharse: event.target.value
+        })
+    }
+
+    render(){
+        const filteredProblems = this.state.problems && this.state.problems
+        .filter(problem => problem.title.idexOf(this.state.searchPharse)!== -1)
+
+        return(
+            <div>
+                {
+
+                    'dupa'
+                    // this.state.isLoadingProblems?
+                    // <Loading />
+                    // :
+                    // this.state.problems ?
+                    // <div>
+                    //     <Forms 
+                    //         newProblemTitle = {this.state.newProblemTitle}
+                    //     />
+                    // </div>
+                }
+            </div>
+        )
+    }
 
 
 }
