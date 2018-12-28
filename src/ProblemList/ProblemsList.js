@@ -6,7 +6,7 @@ import mapObjectToArray from '../untils'
 import Forms from './Forms'
 //import Shearch from './Schearch'
 
-//import { database } from '../firebaseConfig'
+import { database } from '../firebaseConfig'
 
 class ProblemsList extends React.Component {
     state = {
@@ -20,7 +20,7 @@ class ProblemsList extends React.Component {
         this.setState({
             isLoadingProblems: true
         })
-        database.ref(adresURl)
+        database.ref('cappy-problems')
             .on(
                 'value',
                 snapshot => {
@@ -98,3 +98,5 @@ class ProblemsList extends React.Component {
 
 
 }
+
+export default ProblemsList

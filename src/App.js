@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import './App.css'
-import Problem from './ProblemList/Problem'
+import ProblemsList from './ProblemList/ProblemsList'
 
 class App extends Component {
   render() {
     return (
     <div>
-        <Problem/>
+        <ProblemsList/>
       </div>
     )
   }

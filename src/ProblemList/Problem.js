@@ -8,16 +8,19 @@ class Problem extends React.Component {
         problemDescription: this.props.problem.description
     }
     editToggle = () => {
-        isEdited = !this.state.isEdited,
-            problemTitle = this.props.problem.title,
-            problemKeyWords = this.props.problem.keyWords,
-            problemDescription = this.props.problem.description
-    }
-    onProblemChangeHandler = (event) => {
         this.setState({
+            isEdited : !this.state.isEdited,
             problemTitle : this.props.problem.title,
             problemKeyWords : this.props.problem.keyWords,
             problemDescription : this.props.problem.description
+        })
+
+    }
+    onProblemChangeHandler = (event) => {
+        this.setState({
+            problemTitle: this.props.problem.title,
+            problemKeyWords: this.props.problem.keyWords,
+            problemDescription: this.props.problem.description
         })
     }
     render() {
@@ -46,7 +49,7 @@ class Problem extends React.Component {
                     />
                     <button
                         onClick={
-                            ()=>{
+                            () => {
                                 this.props.onEditProblemHandler(
                                     this.props.problem.key,
                                     this.state.problemTitle,
