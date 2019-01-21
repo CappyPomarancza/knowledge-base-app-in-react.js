@@ -9,7 +9,7 @@ const Forms = (props) => (
             value={props.newProblemTitle}
             onChange={props.newProblemChangeHandler}
         />
-        <input
+        {/* <input
             type={'text'}
             placeholder={'Key Words'}
             value={props.newProblemKeyWords}
@@ -20,7 +20,7 @@ const Forms = (props) => (
             placeholder={'Description'}
             value={props.newProblemDescription}
             onChange={props.newProblemChangeDescription}
-        />
+        /> */}
         <button
             onClick={props.onAddNewProblemClick}
         >
@@ -31,8 +31,8 @@ const Forms = (props) => (
 
 Forms.propsType = {
     newProblemTitle: PropTypes.string.isRequired,
-    newProblemKeyWords: PropTypes.string.isRequired,
-    newProblemDescription: PropTypes.string.isRequired
+    // newProblemKeyWords: PropTypes.string.isRequired,
+    // newProblemDescription: PropTypes.string.isRequired
 }
 
 export default Forms

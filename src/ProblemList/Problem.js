@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 
 class Problem extends React.Component {
     state = {
@@ -9,10 +11,10 @@ class Problem extends React.Component {
     }
     editToggle = () => {
         this.setState({
-            isEdited : !this.state.isEdited,
-            problemTitle : this.props.problem.title,
-            problemKeyWords : this.props.problem.keyWords,
-            problemDescription : this.props.problem.description
+            isEdited: !this.state.isEdited,
+            problemTitle: this.props.problem.title,
+            problemKeyWords: this.props.problem.keyWords,
+            problemDescription: this.props.problem.description
         })
 
     }
@@ -74,5 +76,9 @@ class Problem extends React.Component {
                 </div>
         )
     }
+}
+
+Problem.propTypes = {
+    problem: PropTypes.object.isRequired
 }
 export default Problem

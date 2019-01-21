@@ -4,7 +4,7 @@ import Loading from './Loading'
 import List from './List'
 import mapObjectToArray from '../untils'
 import Forms from './Forms'
-//import Shearch from './Schearch'
+import Search from './Search'
 
 import { database } from '../firebaseConfig'
 
@@ -81,16 +81,32 @@ class ProblemsList extends React.Component {
             <div>
                 {
 
-                    'dupa'
-                    // this.state.isLoadingProblems?
-                    // <Loading />
-                    // :
-                    // this.state.problems ?
-                    // <div>
-                    //     <Forms 
-                    //         newProblemTitle = {this.state.newProblemTitle}
-                    //     />
-                    // </div>
+                    
+                    this.state.isLoadingProblems?
+                    <Loading />
+                    :
+                    this.state.problems ?
+                    <div>
+                        <Forms 
+                            newProblemTitle = {this.state.newProblemTitle}
+                            newProblemChangeHandler={this.newProblemChangeHandler}
+                            onAddNewProblemClick={this.onAddNewProblemClick}
+                        />
+                        <Search 
+                          searchPharse={this.state.searchPharse}
+                          onSearchPharseChanged={this.onSearchPharseChanged}  
+                        />
+                        <List 
+                            onEditProblemHandler={this.state.onEditProblemHandler}
+
+                            problems={filteredProblems}
+                        />
+                    </div>
+                    :
+                    <Default 
+                        clickHandler={this.initProblemsSync}
+                        label={'Click! dont be shy '}
+                    />
                 }
             </div>
         )
