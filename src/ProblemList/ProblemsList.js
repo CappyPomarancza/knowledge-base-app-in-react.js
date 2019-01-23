@@ -7,6 +7,7 @@ import Forms from './Forms'
 import Search from './Search'
 
 import { database } from '../firebaseConfig'
+import Problem from './Problem';
 
 class ProblemsList extends React.Component {
     state = {
@@ -18,6 +19,7 @@ class ProblemsList extends React.Component {
         searchPhrase: '',
     }
 
+    //componentDidMount
     initProblemsSync = () => {
         this.setState({
             isLoadingProblems: true
@@ -28,19 +30,18 @@ class ProblemsList extends React.Component {
                 'value',
                 snapshot => {
                     const data = snapshot.val()
-                    console.log(data)
                     this.setState({
                         problems: mapObjectToArray(data),
                         isLoadingProblems: false,
 
                     })
-                    console.log(
-                        this.state.problems.map(el=>el.title)
-                        )
+
                 }
             )
+        console.log(this.state.problems)
         console.log('problems shoud be loaded')
     }
+
 
     newProblemTitleChangeHandler = (event) => {
         console.log(event.target.value)
@@ -94,40 +95,51 @@ class ProblemsList extends React.Component {
                 title: newTitle
             })
     }
-    onShearchPharseChanged = (event) => {
+    onSearchPhraseChanged = (event) => {
         this.setState({
             searchPhrase: event.target.value
         })
     }
 
     render() {
-        // console.log(this.state.problems)
-        // const filteredProblems = this.state.problems && this.state.problems
-        //   .filter(problem => problem.title.idexOf(this.state.searchPhrase) !== -1)
-        // console.log(this.state.problems)
+
+        const ProblemsList = this.state.problems && this.state.problems.map(el => el)
+
+        console.log(ProblemsList)
+        console.log(this.state.problems)
+
+
+
         return (
             <div>
-                
-                    <Forms
-                        newProblemTitle={this.state.newProblemTitle}
-                        newProblemDescription={this.state.newProblemDescription}
-                        newProblemKeyWords={this.state.newProblemKeyWords}
+                {
+                    this.state.isLoadingProblems ?
+                        <Loading />
+                        :
+                        this.state.problems ?
+                            <div>
+                                <Forms
+                                    newProblemTitle={this.state.newProblemTitle}
+                                    newProblemDescription={this.state.newProblemDescription}
+                                    newProblemKeyWords={this.state.newProblemKeyWords}
 
-                        newProblemDescriptionChangeHandler={this.newProblemDescriptionChangeHandler}
-                        newProblemKeyWordsChangeHandler={this.newProblemKeyWordsChangeHandler}
-                        newProblemTitleChangeHandler={this.newProblemTitleChangeHandler}
-                        onAddNewProblemClick={this.onAddNewProblemClick}
-                    />
-                    <Default
-                        clickHandler={this.initProblemsSync}
-                        label={'Click! dont be shy '}
-                    />
-                
+                                    newProblemDescriptionChangeHandler={this.newProblemDescriptionChangeHandler}
+                                    newProblemKeyWordsChangeHandler={this.newProblemKeyWordsChangeHandler}
+                                    newProblemTitleChangeHandler={this.newProblemTitleChangeHandler}
+                                    onAddNewProblemClick={this.onAddNewProblemClick}
+                                />
+                                <List
+                                    onEditProblemHandler={this.state.onEditProblemHandler}
 
-
-
-
-
+                                    problems={ProblemsList}
+                                />
+                            </div>
+                            :
+                            <Default
+                                clickHandler={this.initProblemsSync}
+                                label={'Click! dont be shy '}
+                            />
+                }
             </div>
         )
     }

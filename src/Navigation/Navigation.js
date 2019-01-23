@@ -18,7 +18,7 @@ class Navigation extends React.Component {
         return (
             <div>
                 <AppBar
-                    title={Knowledge - app - DmkSoft}
+                    title={'Knowledge - app - DmkSoft'}
                     onLeftIconButtonClick={this.toggleHandler}
                 />
                 <SideBar

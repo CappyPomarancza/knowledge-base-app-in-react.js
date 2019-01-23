@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Problem from './Problem'
 
 
@@ -16,8 +15,6 @@ const List = (props) => (
         }
     </div>
 )
-List.propTypes = {
-    problems: PropTypes.array.isRequired
-}
+
 
 export default List

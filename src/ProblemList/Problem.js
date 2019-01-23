@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 
 
 class Problem extends React.Component {
@@ -27,45 +27,45 @@ class Problem extends React.Component {
     }
     render() {
         return (
-            this.state.isEdited ?
-                <div>
-                    <button
-                        onClick={this.editToggle}
-                    >
-                        Canel
-                </button>
-                    <input
-                        type={'text'}
-                        onChange={this.onProblemChangeHandler}
-                        value={this.state.problemTitle}
-                    />
-                    <input
-                        type={'text'}
-                        onChange={this.onProblemChangeHandler}
-                        value={this.state.problemDescription}
-                    />
-                    <input
-                        type={'text'}
-                        onChange={this.onProblemChangeHandler}
-                        value={this.state.problemKeyWords}
-                    />
-                    <button
-                        onClick={
-                            () => {
-                                this.props.onEditProblemHandler(
-                                    this.props.problem.key,
-                                    this.state.problemTitle,
-                                    this.state.problem.description,
-                                    this.state.problem.keyWords
-                                )
-                                this.editToggle()
-                            }
-                        }
-                    >
-                        SAVE
-                    </button>
-                </div>
-                :
+            // this.state.isEdited ?
+            //     <div>
+            //         <button
+            //             onClick={this.editToggle}
+            //         >
+            //             Canel
+            //     </button>
+            //         <input
+            //             type={'text'}
+            //             onChange={this.onProblemChangeHandler}
+            //             value={this.state.problemTitle}
+            //         />
+            //         <input
+            //             type={'text'}
+            //             onChange={this.onProblemChangeHandler}
+            //             value={this.state.problemDescription}
+            //         />
+            //         <input
+            //             type={'text'}
+            //             onChange={this.onProblemChangeHandler}
+            //             value={this.state.problemKeyWords}
+            //         />
+            //         <button
+            //             onClick={
+            //                 () => {
+            //                     this.props.onEditProblemHandler(
+            //                         this.props.problem.key,
+            //                         this.state.problemTitle,
+            //                         this.state.problem.description,
+            //                         this.state.problem.keyWords
+            //                     )
+            //                     this.editToggle()
+            //                 }
+            //             }
+            //         >
+            //             SAVE
+            //         </button>
+            //     </div>
+            //     :
                 <div>
                     {this.props.problem.title}
                     <button
@@ -78,7 +78,4 @@ class Problem extends React.Component {
     }
 }
 
-Problem.propTypes = {
-    problem: PropTypes.object.isRequired
-}
 export default Problem
