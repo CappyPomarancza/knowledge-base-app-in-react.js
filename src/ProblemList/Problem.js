@@ -67,11 +67,19 @@ class Problem extends React.Component {
             //     </div>
             //     :
                 <div>
-                    {this.props.problem.title}
+                   <h2> {this.props.problem.title}</h2>
+
+                   {/* <h2>{this.props.problem.description}</h2>
+                   <h3>{this.state.problem.keyWords}</h3> */}
                     <button
                         onClick={this.editToggle}
                     >
                         EDIT
+                    </button>
+                    <button
+                    onClick={this.deletedProblem}
+                    >
+                        DELETE 
                     </button>
                 </div>
         )

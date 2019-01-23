@@ -107,7 +107,8 @@ class ProblemsList extends React.Component {
 
         console.log(ProblemsList)
         console.log(this.state.problems)
-
+        const filteredProblems = this.state.problems && this.state.problems 
+        .filter(problem => problem.title.indexOf(this.state.searchPhrase) !== -1)
 
 
         return (
@@ -128,10 +129,14 @@ class ProblemsList extends React.Component {
                                     newProblemTitleChangeHandler={this.newProblemTitleChangeHandler}
                                     onAddNewProblemClick={this.onAddNewProblemClick}
                                 />
+                                <Search
+                                    searchPhrase={this.state.searchPhrase}
+                                    onSearchPhraseChanged={this.onSearchPhraseChanged}
+                                />
                                 <List
                                     onEditProblemHandler={this.state.onEditProblemHandler}
 
-                                    problems={ProblemsList}
+                                    problems={filteredProblems}
                                 />
                             </div>
                             :

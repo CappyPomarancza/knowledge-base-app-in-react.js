@@ -4,7 +4,7 @@ const Search = (props) => (
     <input 
         placeholder={'Search'}
         value={props.searchPhrase}
-        onChange={props.onShearchPhraseChanged}
+        onChange={props.onSearchPhraseChanged}
     />
 )
  export default Search
