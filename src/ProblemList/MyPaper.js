@@ -9,7 +9,7 @@ const styles = {
 
 const MyPaper = props =>(
     <Paper 
-        elevation={14}
+        elevation={24}
         style={styles}
     >
         {props.children}
