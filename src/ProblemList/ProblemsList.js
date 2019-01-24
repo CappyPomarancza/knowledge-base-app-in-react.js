@@ -5,6 +5,7 @@ import List from './List'
 import mapObjectToArray from '../untils'
 import Forms from './Forms'
 import Search from './Search'
+import MyPaper from './MyPaper'
 
 import { database } from '../firebaseConfig'
 import Problem from './Problem';
@@ -112,7 +113,7 @@ class ProblemsList extends React.Component {
 
 
         return (
-            <div>
+            <MyPaper>
                 {
                     this.state.isLoadingProblems ?
                         <Loading />
@@ -142,10 +143,10 @@ class ProblemsList extends React.Component {
                             :
                             <Default
                                 clickHandler={this.initProblemsSync}
-                                label={'Click! dont be shy '}
+                                label={'Download Problems List from Firebase'}
                             />
                 }
-            </div>
+            </MyPaper>
         )
     }
 

@@ -1,23 +1,19 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
-
+import Button from  '@material-ui/core/Button'
+import { LARGE } from 'material-ui/utils/withWidth';
 
 const Default = (props) => (
     <div>
-        <button
-            onClick={props.clickHandler}
+        <Button 
+        variant="contained" 
+        color="primary"
+        onClick={props.clickHandler}
+        fullWidth={true}
+        size={'LARGE'}
         >
-        wft?
-            {props.label}
-        </button>
+        {props.label}
+    </Button>
     </div>
 )
-
-
-Default.propTypes ={
-    clickHandler: PropTypes.func.isRequired,
-    label: PropTypes.string.isRequired
-}
 
 export default Default
