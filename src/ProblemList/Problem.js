@@ -2,6 +2,8 @@ import React from 'react'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+
 
 
 
@@ -35,6 +37,10 @@ class Problem extends React.Component {
 
                 <List component="nav">
                     <ListItem button>
+                        <ListItemIcon>
+                            
+
+                        </ListItemIcon>
                         <ListItemText
                             primary={this.props.problem.title}
                         />
