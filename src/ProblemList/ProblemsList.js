@@ -86,24 +86,9 @@ class ProblemsList extends React.Component {
             })
     }
 
-    deletedProblemClick = (key) => {
-        const request = {
-            method: 'DELETE'
-        }
-
-        fetch(`https://todo-e8a15.firebaseio.com/cappy-problems/${key}.json`
-            , request)
-            .then(response => console.log(response))
-        console.log('deleted Problem')
-    }
+    
 
     onEditProblemHandler = (key, newTitle, newDescription, newKeyWords) => {
-        // database.ref(`cappy-problems/${key}`)
-        //     .update({
-        //         title: newTitle,
-        //         description: newDescription,
-        //         keyWords: newKeyWords
-        //     })
 
         const request = {
             method: 'PATCH',

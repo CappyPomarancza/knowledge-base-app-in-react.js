@@ -21,7 +21,8 @@ class Problem extends React.Component {
             isEdited: !this.state.isEdited,
             problemTitle: this.props.problem.title,
             problemKeyWords: this.props.problem.keyWords,
-            problemDescription: this.props.problem.description
+            problemDescription: this.props.problem.description,
+            problemKey: this.props.problem.key
         })
 
     }
@@ -40,10 +41,19 @@ class Problem extends React.Component {
             problemKeyWords: event.target.value
         })
     }
+    onDeleteProblemClick = (key) => {
+        const request = {
+            method: 'DELETE'
+        }
+
+        fetch(`https://todo-e8a15.firebaseio.com/cappy-problems/${key}.json`
+            , request
+        )
+
+        console.log('deleted Problem')
+    }
     render() {
-        console.log(this.state.problemTitle)
-        console.log(this.state.problemDescription)
-        console.log(this.state.problemKeyWords)
+        console.log(this.props.problem.key)
         return (
 
             <div>
@@ -84,6 +94,17 @@ class Problem extends React.Component {
                         >
                             SAVE
                         </button>
+                        <button
+                            onClick={
+                                () => {
+                                    this.onDeleteProblemClick(this.props.problem.key)
+                                    console.log('wTF??')
+
+                                }
+                            }
+                        >
+                            DELETE
+                        </button>
                     </div>
                     :
                     <div>
@@ -100,11 +121,7 @@ class Problem extends React.Component {
                         >
                             EDIT
                     </button>
-                        <button
 
-                        >
-                            DELETE
-                    </button>
                     </div>
                 }
             </div>

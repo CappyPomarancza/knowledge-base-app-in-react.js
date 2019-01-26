@@ -10,7 +10,7 @@ const List = (props) => (
                     key={problem.key}
                     problem={problem}
 
-                    deletedProblemClick={props.deletedProblemClick}
+                    onDeleteProblemClick={props.onDeleteProblemClick}
                     onEditProblemHandler={props.onEditProblemHandler}
                 />
             ))
