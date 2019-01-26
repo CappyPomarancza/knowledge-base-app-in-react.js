@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -79,6 +80,25 @@ class Problem extends React.Component {
                             onChange={this.onProblemKeyWordsChangeHandler}
                             value={this.state.problemKeyWords}
                         />
+
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={
+                                () => {
+                                    this.props.onEditProblemHandler(
+                                        this.props.problem.key,
+                                        this.state.problemTitle,
+                                        this.state.problemDescription,
+                                        this.state.problemKeyWords
+                                    )
+                                    this.editToggle()
+                                }
+                            }
+                            fullWidth={true}
+                        >
+                            SAVE CHANGES
+                        </Button>
                         <button
                             onClick={
                                 () => {
@@ -94,7 +114,9 @@ class Problem extends React.Component {
                         >
                             SAVE
                         </button>
-                        <button
+                        <Button
+                            variant="contained"
+                            color="primary"
                             onClick={
                                 () => {
                                     this.onDeleteProblemClick(this.props.problem.key)
@@ -102,9 +124,10 @@ class Problem extends React.Component {
 
                                 }
                             }
+                            fullWidth={true}
                         >
-                            DELETE
-                        </button>
+                            DELETE PROBLEM
+                        </Button>
                     </div>
                     :
                     <div>
@@ -115,12 +138,15 @@ class Problem extends React.Component {
                             }
                         </h2>
 
-
-                        <button
+                        <Button
+                            variant="contained"
+                            color="primary"
                             onClick={this.editToggle}
+                            fullWidth={true}
                         >
                             EDIT
-                    </button>
+            </Button>
+
 
                     </div>
                 }
