@@ -9,6 +9,8 @@ const List = (props) => (
                 <Problem
                     key={problem.key}
                     problem={problem}
+
+                    deletedProblemClick={props.deletedProblemClick}
                     onEditProblemHandler={props.onEditProblemHandler}
                 />
             ))

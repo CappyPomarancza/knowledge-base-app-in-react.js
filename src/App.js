@@ -19,7 +19,6 @@ class App extends Component {
             <Route path={'/'} exact component={ProblemsList} />
             <Route path={'/problemsList'} component={ProblemsList} />
             <Route path={'/forms'} exact component={Forms} />
-            {/* <Route path={'/favourites'} component={Favourites} /> */}
           </div>
         </Router>
       </div>

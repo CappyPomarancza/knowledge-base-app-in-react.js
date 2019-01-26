@@ -74,9 +74,6 @@ class ProblemsList extends React.Component {
                 description: this.state.newProblemDescription
             })
         }
-        console.log(this.state.newProblemTitle)
-        console.log(this.state.newProblemDescription)
-        console.log(this.state.newProblemKeyWords)
 
         fetch('https://todo-e8a15.firebaseio.com/cappy-problems/.json'
             , request)
@@ -86,15 +83,40 @@ class ProblemsList extends React.Component {
                     newProblemDescription: '',
                     newProblemKeyWords: ''
                 })
-                console.log('test')
-
             })
     }
-    onEditProblemHandler = (key, newTitle) => {
-        database.ref(`cappy-problems/${key}`)
-            .update({
-                title: newTitle
+
+    deletedProblemClick = (key) => {
+        const request = {
+            method: 'DELETE'
+        }
+
+        fetch(`https://todo-e8a15.firebaseio.com/cappy-problems/${key}.json`
+            , request)
+            .then(response => console.log(response))
+        console.log('deleted Problem')
+    }
+
+    onEditProblemHandler = (key, newTitle, newDescription, newKeyWords) => {
+        // database.ref(`cappy-problems/${key}`)
+        //     .update({
+        //         title: newTitle,
+        //         description: newDescription,
+        //         keyWords: newKeyWords
+        //     })
+
+        const request = {
+            method: 'PATCH',
+            body: JSON.stringify({
+                title: newTitle,
+                description: newDescription,
+                keyWords: newKeyWords
             })
+        }
+
+        return fetch(`https://todo-e8a15.firebaseio.com/cappy-problems/${key}/.json`
+            , request
+        )
     }
     onSearchPhraseChanged = (event) => {
         this.setState({
@@ -102,14 +124,15 @@ class ProblemsList extends React.Component {
         })
     }
 
+
     render() {
 
         const ProblemsList = this.state.problems && this.state.problems.map(el => el)
 
-        console.log(ProblemsList)
+
         console.log(this.state.problems)
-        const filteredProblems = this.state.problems && this.state.problems 
-        .filter(problem => problem.title.indexOf(this.state.searchPhrase) !== -1)
+        const filteredProblems = this.state.problems && this.state.problems
+            .filter(problem => problem.title.indexOf(this.state.searchPhrase) !== -1)
 
 
         return (
@@ -135,8 +158,7 @@ class ProblemsList extends React.Component {
                                     onSearchPhraseChanged={this.onSearchPhraseChanged}
                                 />
                                 <List
-                                    onEditProblemHandler={this.state.onEditProblemHandler}
-
+                                    onEditProblemHandler={this.onEditProblemHandler}
                                     problems={filteredProblems}
                                 />
                             </div>
