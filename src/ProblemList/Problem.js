@@ -1,11 +1,13 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
-import { EditorVerticalAlignTop } from 'material-ui/svg-icons';
+import { EditorVerticalAlignTop } from 'material-ui/svg-icons'
 
+import { createMuiTheme } from '@material-ui/core/styles'
 
 
 
@@ -17,6 +19,9 @@ class Problem extends React.Component {
         problemDescription: this.props.problem.description,
         problemKey: this.props.problem.key
     }
+
+
+
     editToggle = () => {
         this.setState({
             isEdited: !this.state.isEdited,
@@ -55,33 +60,62 @@ class Problem extends React.Component {
     }
     render() {
         console.log(this.props.problem.key)
+
+        const theme = createMuiTheme({
+            palette: {
+                primary: {
+                    light: '#757ce8',
+                    main: '#3f50b5',
+                    dark: '#002884',
+                    contrastText: '#fff',
+                },
+                secondary: {
+                    light: '#ff7961',
+                    main: '#f44336',
+                    dark: '#ba000d',
+                    contrastText: '#000',
+                },
+            },
+        });
         return (
 
             <div>
                 {this.state.isEdited ?
                     <div>
-                        <button
-                            onClick={this.editToggle}
-                        >
-                            Canel
-                     </button>
-                        <input
-                            type={'text'}
+                        <TextField
+                            label="New Problem Title"
+                            placeholder="Write New Problem Title"
+                            fullWidth={true}
+                            margin="normal"
                             onChange={this.onProblemTitleChangeHandler}
                             value={this.state.problemTitle}
                         />
-                        <input
-                            type={'text'}
+                        <TextField
+                            label="New Problem Description"
+                            placeholder="Write New Problem Description"
+                            fullWidth={true}
+                            margin="normal"
                             onChange={this.onProblemDescriptionChangeHandler}
                             value={this.state.problemDescription}
                         />
-                        <input
-                            type={'text'}
+                        <TextField
+                            label="New Problem #KeyWords"
+                            placeholder="Write New Problem #KeyWords"
+                            fullWidth={true}
+                            margin="normal"
                             onChange={this.onProblemKeyWordsChangeHandler}
                             value={this.state.problemKeyWords}
                         />
-
                         <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={this.editToggle}
+                            fullWidth={true}
+                        >
+                            CANEL
+                        </Button>
+                        <Button
+
                             variant="contained"
                             color="primary"
                             onClick={
@@ -99,24 +133,10 @@ class Problem extends React.Component {
                         >
                             SAVE CHANGES
                         </Button>
-                        <button
-                            onClick={
-                                () => {
-                                    this.props.onEditProblemHandler(
-                                        this.props.problem.key,
-                                        this.state.problemTitle,
-                                        this.state.problemDescription,
-                                        this.state.problemKeyWords
-                                    )
-                                    this.editToggle()
-                                }
-                            }
-                        >
-                            SAVE
-                        </button>
                         <Button
+
                             variant="contained"
-                            color="primary"
+                            color="secondary"
                             onClick={
                                 () => {
                                     this.onDeleteProblemClick(this.props.problem.key)
@@ -139,13 +159,14 @@ class Problem extends React.Component {
                         </h2>
 
                         <Button
+
                             variant="contained"
                             color="primary"
                             onClick={this.editToggle}
                             fullWidth={true}
                         >
                             EDIT
-            </Button>
+                        </Button>
 
 
                     </div>

@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import TextField from '@material-ui/core/TextField'
-import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import MyPaper from './MyPaper'
 
