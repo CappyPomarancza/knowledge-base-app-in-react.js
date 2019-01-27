@@ -44,47 +44,47 @@ class ProblemsList extends React.Component {
     }
 
 
-    newProblemTitleChangeHandler = (event) => {
-        console.log(event.target.value)
-        this.setState({
-            newProblemTitle: event.target.value
-        })
-    }
+    // newProblemTitleChangeHandler = (event) => {
+    //     console.log(event.target.value)
+    //     this.setState({
+    //         newProblemTitle: event.target.value
+    //     })
+    // }
 
-    newProblemKeyWordsChangeHandler = (event) => {
-        console.log(event.target.value)
-        this.setState({
-            newProblemKeyWords: event.target.value
-        })
-    }
+    // newProblemKeyWordsChangeHandler = (event) => {
+    //     console.log(event.target.value)
+    //     this.setState({
+    //         newProblemKeyWords: event.target.value
+    //     })
+    // }
 
-    newProblemDescriptionChangeHandler = (event) => {
-        console.log(event.target.value)
-        this.setState({
-            newProblemDescription: event.target.value
-        })
-    }
+    // newProblemDescriptionChangeHandler = (event) => {
+    //     console.log(event.target.value)
+    //     this.setState({
+    //         newProblemDescription: event.target.value
+    //     })
+    // }
 
-    onAddNewProblemClick = () => {
-        const request = {
-            method: 'POST',
-            body: JSON.stringify({
-                title: this.state.newProblemTitle,
-                keyWords: this.state.newProblemKeyWords,
-                description: this.state.newProblemDescription
-            })
-        }
+    // onAddNewProblemClick = () => {
+    //     const request = {
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //             title: this.state.newProblemTitle,
+    //             keyWords: this.state.newProblemKeyWords,
+    //             description: this.state.newProblemDescription
+    //         })
+    //     }
 
-        fetch('https://todo-e8a15.firebaseio.com/cappy-problems/.json'
-            , request)
-            .then(response => {
-                this.setState({
-                    newProblemTitle: '',
-                    newProblemDescription: '',
-                    newProblemKeyWords: ''
-                })
-            })
-    }
+    //     fetch('https://todo-e8a15.firebaseio.com/cappy-problems/.json'
+    //         , request)
+    //         .then(response => {
+    //             this.setState({
+    //                 newProblemTitle: '',
+    //                 newProblemDescription: '',
+    //                 newProblemKeyWords: ''
+    //             })
+    //         })
+    // }
 
     
 
@@ -128,7 +128,7 @@ class ProblemsList extends React.Component {
                         :
                         this.state.problems ?
                             <div>
-                                <Forms
+                                {/* <Forms
                                     newProblemTitle={this.state.newProblemTitle}
                                     newProblemDescription={this.state.newProblemDescription}
                                     newProblemKeyWords={this.state.newProblemKeyWords}
@@ -137,7 +137,8 @@ class ProblemsList extends React.Component {
                                     newProblemKeyWordsChangeHandler={this.newProblemKeyWordsChangeHandler}
                                     newProblemTitleChangeHandler={this.newProblemTitleChangeHandler}
                                     onAddNewProblemClick={this.onAddNewProblemClick}
-                                />
+                                /> */}
+                                <Forms/>
                                 <Search
                                     searchPhrase={this.state.searchPhrase}
                                     onSearchPhraseChanged={this.onSearchPhraseChanged}

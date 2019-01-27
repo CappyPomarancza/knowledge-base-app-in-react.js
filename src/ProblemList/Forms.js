@@ -5,54 +5,108 @@ import Button from '@material-ui/core/Button'
 import MyPaper from './MyPaper'
 
 
-const Forms = (props) => (
-    <div>
-        <MyPaper
+class Forms extends React.Component {
 
-        >
+    state={
+        newProblemTitle: '',
+        newProblemDescription: '',
+        newProblemKeyWords: ''
+    }
+
+
+    newProblemTitleChangeHandler = (event) => {
+        console.log(event.target.value)
+        this.setState({
+            newProblemTitle: event.target.value
+        })
+    }
+
+    newProblemKeyWordsChangeHandler = (event) => {
+        console.log(event.target.value)
+        this.setState({
+            newProblemKeyWords: event.target.value
+        })
+    }
+
+    newProblemDescriptionChangeHandler = (event) => {
+        console.log(event.target.value)
+        this.setState({
+            newProblemDescription: event.target.value
+        })
+    }
+
+    onAddNewProblemClick = () => {
+        const request = {
+            method: 'POST',
+            body: JSON.stringify({
+                title: this.state.newProblemTitle,
+                keyWords: this.state.newProblemKeyWords,
+                description: this.state.newProblemDescription
+            })
+        }
+
+        fetch('https://todo-e8a15.firebaseio.com/cappy-problems/.json'
+            , request)
+            .then(response => {
+                this.setState({
+                    newProblemTitle: '',
+                    newProblemDescription: '',
+                    newProblemKeyWords: ''
+                })
+                console.log('call back')
+            })
+    }
+    render() {
+        return (
             <div>
-                <TextField
-                    label="Problem Title"
-                    placeholder="Write Problem Title"
-                    fullWidth={true}
-                    margin="normal"
-                    value={props.newProblemTitle}
-                    onChange={props.newProblemTitleChangeHandler}
-                />
-            </div>
-            <div>
-                <TextField
-                    label="Key Words"
-                    placeholder={'Write Key Words'}
-                    fullWidth={true}
-                    margin='normal'
-                    value={props.newProblemKeyWords}
-                    onChange={props.newProblemKeyWordsChangeHandler}
-                />
-            </div>
-            <div>
-                <TextField
-                    label={'Description'}
-                    placeholder={'Write Solution to Problem'}
-                    fullWidth={true}
-                    margin='normal'
-                    value={props.newProblemDescription}
-                    onChange={props.newProblemDescriptionChangeHandler}
-                />
-            </div>
-            <div>
-                <Button
-                    variant={"contained"}
-                    color={"primary"}
-                    fullWidth={true}
-                    onClick={props.onAddNewProblemClick}
+                <MyPaper
                 >
-                    Add New Problem
+
+                    <div>
+                        <TextField
+                            label="Problem Title"
+                            placeholder="Write Problem Title"
+                            fullWidth={true}
+                            margin="normal"
+                            value={this.newProblemTitle}
+                            onChange={this.newProblemTitleChangeHandler}
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            label="Key Words"
+                            placeholder={'Write Key Words'}
+                            fullWidth={true}
+                            margin='normal'
+                            value={this.newProblemKeyWords}
+                            onChange={this.newProblemKeyWordsChangeHandler}
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            label={'Description'}
+                            placeholder={'Write Solution'}
+                            fullWidth={true}
+                            margin='normal'
+                            value={this.newProblemDescription}
+                            onChange={this.newProblemDescriptionChangeHandler}
+                        />
+                    </div>
+                    <div>
+                        <Button
+                            variant={"contained"}
+                            color={"primary"}
+                            fullWidth={true}
+                            onClick={this.onAddNewProblemClick}
+                        >
+                            Add New Problem
         </Button>
+                    </div>
+                </MyPaper>
             </div>
-        </MyPaper>
-    </div>
-)
+        )
+    }
+}
 
 Forms.propsType = {
     newProblemTitle: PropTypes.string.isRequired,

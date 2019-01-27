@@ -16,3 +16,5 @@ const SideBarItem = props => (
         </Link>
     </div>
 )
+
+export default SideBarItem

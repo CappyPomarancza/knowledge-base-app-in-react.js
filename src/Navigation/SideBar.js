@@ -11,9 +11,22 @@ class SideBar extends React.Component {
                 onRequestChange={this.props.toggleSideBar}
                 open={this.props.isSideBarOpen}
             >
-            
-            
-            
+            <SideBarItem
+                    to={'/problemsList'}
+                    label={'Problem List'}
+                    toggleSideBar={this.props.toggleSideBar}
+                />
+                <SideBarItem
+                    to={'/forms'}
+                    label={'Add New Problem'}
+                    toggleSideBar={this.props.toggleSideBar}
+                />
+                <SideBarItem
+                    to={'/favourite'}
+                    label={'Add New Problem'}
+                    toggleSideBar={this.props.toggleSideBar}
+                />
+                
             </Drawer>
         )
     }
