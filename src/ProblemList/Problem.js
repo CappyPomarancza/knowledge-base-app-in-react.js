@@ -59,8 +59,6 @@ class Problem extends React.Component {
         console.log('deleted Problem')
     }
     render() {
-        console.log(this.props.problem.key)
-
         const theme = createMuiTheme({
             palette: {
                 primary: {
@@ -112,7 +110,7 @@ class Problem extends React.Component {
                             onClick={this.editToggle}
                             fullWidth={true}
                         >
-                            CANEL
+                            CANCEL
                         </Button>
                         <Button
 
@@ -140,8 +138,6 @@ class Problem extends React.Component {
                             onClick={
                                 () => {
                                     this.onDeleteProblemClick(this.props.problem.key)
-                                    console.log('wTF??')
-
                                 }
                             }
                             fullWidth={true}

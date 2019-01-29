@@ -7,7 +7,8 @@ import MyPaper from './MyPaper'
 
 class Forms extends React.Component {
 
-    state={
+    state = {
+        isProblemAdded: false,
         newProblemTitle: '',
         newProblemDescription: '',
         newProblemKeyWords: ''
@@ -48,10 +49,12 @@ class Forms extends React.Component {
         fetch('https://todo-e8a15.firebaseio.com/cappy-problems/.json'
             , request)
             .then(response => {
+                console.log(response)
                 this.setState({
                     newProblemTitle: '',
                     newProblemDescription: '',
-                    newProblemKeyWords: ''
+                    newProblemKeyWords: '',
+                    isProblemAdded: true
                 })
                 console.log('call back')
             })
@@ -61,47 +64,54 @@ class Forms extends React.Component {
             <div>
                 <MyPaper
                 >
+                    {this.state.isProblemAdded ?
 
-                    <div>
-                        <TextField
-                            label="Problem Title"
-                            placeholder="Write Problem Title"
-                            fullWidth={true}
-                            margin="normal"
-                            value={this.newProblemTitle}
-                            onChange={this.newProblemTitleChangeHandler}
-                        />
-                    </div>
-                    <div>
-                        <TextField
-                            label="Key Words"
-                            placeholder={'Write Key Words'}
-                            fullWidth={true}
-                            margin='normal'
-                            value={this.newProblemKeyWords}
-                            onChange={this.newProblemKeyWordsChangeHandler}
-                        />
-                    </div>
-                    <div>
-                        <TextField
-                            label={'Description'}
-                            placeholder={'Write Solution'}
-                            fullWidth={true}
-                            margin='normal'
-                            value={this.newProblemDescription}
-                            onChange={this.newProblemDescriptionChangeHandler}
-                        />
-                    </div>
-                    <div>
-                        <Button
-                            variant={"contained"}
-                            color={"primary"}
-                            fullWidth={true}
-                            onClick={this.onAddNewProblemClick}
-                        >
-                            Add New Problem
-        </Button>
-                    </div>
+                        <div>Your Problem was Added to base</div>
+                        :
+                        < div >
+                            <div>
+                                <TextField
+                                    label="Problem Title"
+                                    placeholder="Write Problem Title"
+                                    fullWidth={true}
+                                    margin="normal"
+                                    value={this.newProblemTitle}
+                                    onChange={this.newProblemTitleChangeHandler}
+                                />
+                            </div>
+                            <div>
+                                <TextField
+                                    label="Key Words"
+                                    placeholder={'Write Key Words'}
+                                    fullWidth={true}
+                                    margin='normal'
+                                    value={this.newProblemKeyWords}
+                                    onChange={this.newProblemKeyWordsChangeHandler}
+                                />
+                            </div>
+                            <div>
+                                <TextField
+                                    label={'Description'}
+                                    placeholder={'Write Solution'}
+                                    fullWidth={true}
+                                    margin='normal'
+                                    value={this.newProblemDescription}
+                                    onChange={this.newProblemDescriptionChangeHandler}
+                                />
+                            </div>
+                            <div>
+                                <Button
+                                    variant={"contained"}
+                                    color={"primary"}
+                                    fullWidth={true}
+                                    onClick={this.onAddNewProblemClick}
+                                >
+                                    Add New Problem
+                            </Button>
+                            </div>
+                        </div>
+
+                    }
                 </MyPaper>
             </div>
         )
