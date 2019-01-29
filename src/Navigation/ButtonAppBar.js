@@ -5,7 +5,8 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
-
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
 
 const styles = {
     root: {
@@ -21,23 +22,29 @@ const styles = {
 }
 
 function ButtonAppBar(props) {
-
+    const { classes } = props
     return (
-        <div>
-            <AppBar position="fixed" color='primary'>
+        <div className={classes.root} >
+            <AppBar
+                position="fixed"
+                color="primary"
+            >
                 <Toolbar variant='dense'>
-                    <Button
-                        variant='contained'
-                        color="primary"
-                        onClick={props.toggleDrawer}
-                    >
-                        Menu
-                    </Button>
+                    <IconButton
+                     className={classes.menuButton} 
+                     color="inherit" 
+                     aria-label="Menu"
+                     onClick={props.toggleDrawer}
+                     >
+                        <MenuIcon />
+                    </IconButton>
 
                     <Typography
+                        className={classes.grow}
                         variant="subtitle1"
                         color="inherit"
-                        align={'center'}
+                        textAlign="center"
+                        align='center'
                     >
                         Knowledge Base App In React.Js
           </Typography>
@@ -49,6 +56,6 @@ function ButtonAppBar(props) {
 
 ButtonAppBar.propTypes = {
     classes: PropTypes.object.isRequired,
-};
+}
 
-export default withStyles(styles)(ButtonAppBar);
+export default withStyles(styles)(ButtonAppBar)

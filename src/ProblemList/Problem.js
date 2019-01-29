@@ -1,6 +1,16 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
+import Fab from '@material-ui/core/Fab'
+import AddIcon from '@material-ui/icons/Add'
+import Icon from '@material-ui/core/Icon'
+import DeleteIcon from '@material-ui/icons/Delete'
+import NavigationIcon from '@material-ui/icons/Navigation'
+import SaveIcon from '@material-ui/icons/Save'
+import Cancel from '@material-ui/icons/Cancel'
+
+
+
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -59,22 +69,7 @@ class Problem extends React.Component {
         console.log('deleted Problem')
     }
     render() {
-        const theme = createMuiTheme({
-            palette: {
-                primary: {
-                    light: '#757ce8',
-                    main: '#3f50b5',
-                    dark: '#002884',
-                    contrastText: '#fff',
-                },
-                secondary: {
-                    light: '#ff7961',
-                    main: '#f44336',
-                    dark: '#ba000d',
-                    contrastText: '#000',
-                },
-            },
-        });
+
         return (
 
             <div>
@@ -104,58 +99,64 @@ class Problem extends React.Component {
                             onChange={this.onProblemKeyWordsChangeHandler}
                             value={this.state.problemKeyWords}
                         />
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={this.editToggle}
-                            fullWidth={true}
-                        >
-                            CANCEL
-                        </Button>
-                        <Button
+                        <div>
+                            <Button
 
-                            variant="contained"
-                            color="primary"
-                            onClick={
-                                () => {
-                                    this.props.onEditProblemHandler(
-                                        this.props.problem.key,
-                                        this.state.problemTitle,
-                                        this.state.problemDescription,
-                                        this.state.problemKeyWords
-                                    )
-                                    this.editToggle()
+                                variant="contained"
+                                color="primary"
+                                onClick={
+                                    () => {
+                                        this.props.onEditProblemHandler(
+                                            this.props.problem.key,
+                                            this.state.problemTitle,
+                                            this.state.problemDescription,
+                                            this.state.problemKeyWords
+                                        )
+                                        this.editToggle()
+                                    }
                                 }
-                            }
-                            fullWidth={true}
-                        >
-                            SAVE CHANGES
+                            >
+                                <SaveIcon />
+                                SAVE CHANGES
                         </Button>
-                        <Button
+                            <Button
 
-                            variant="contained"
-                            color="secondary"
-                            onClick={
-                                () => {
-                                    this.onDeleteProblemClick(this.props.problem.key)
+                                variant="contained"
+                                color="secondary"
+                                onClick={
+                                    () => {
+                                        this.onDeleteProblemClick(this.props.problem.key)
+                                    }
                                 }
-                            }
-                            fullWidth={true}
-                        >
-                            DELETE PROBLEM
+                            >
+                                <DeleteIcon  />
+                                DELETE PROBLEM
                         </Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={this.editToggle}
+
+                            >
+                                <Cancel />
+                                CANCEL
+                        </Button>
+                        </div>
                     </div>
                     :
                     <div>
-                        <h2> {this.props.problem.title}</h2>
-                        <h2>
-                            {
-                                '#' + this.props.problem.keyWords
-                            }
-                        </h2>
 
+                        <div>
+
+                            <h2> {this.props.problem.title}</h2>
+                            <h2>
+                                {
+                                    '#' + this.props.problem.keyWords
+                                }
+                            </h2>
+
+                        </div>
                         <Button
-
                             variant="contained"
                             color="primary"
                             onClick={this.editToggle}
@@ -163,7 +164,6 @@ class Problem extends React.Component {
                         >
                             EDIT
                         </Button>
-
 
                     </div>
                 }
@@ -173,86 +173,3 @@ class Problem extends React.Component {
 }
 
 export default Problem
-
-
-
-
-
-
-
-
-
-
-// this.state.isEdited ?
-//     <div>
-//         <button
-//             onClick={this.editToggle}
-//         >
-//             Canel
-//     </button>
-//         <input
-//             type={'text'}
-//             onChange={this.onProblemChangeHandler}
-//             value={this.state.problemTitle}
-//         />
-//         <input
-//             type={'text'}
-//             onChange={this.onProblemChangeHandler}
-//             value={this.state.problemDescription}
-//         />
-//         <input
-//             type={'text'}
-//             onChange={this.onProblemChangeHandler}
-//             value={this.state.problemKeyWords}
-//         />
-//         <button
-//             onClick={
-//                 () => {
-//                     this.props.onEditProblemHandler(
-//                         this.props.problem.key,
-//                         this.state.problemTitle,
-//                         this.state.problem.description,
-//                         this.state.problem.keyWords
-//                     )
-//                     this.editToggle()
-//                 }
-//             }
-//         >
-//             SAVE
-//         </button>
-//     </div>
-//     :
-
-{/* <h2> {this.props.problem.title}</h2>
-                 <h2>{this.props.problem.description}</h2>
-                   <h3>{this.state.problem.keyWords}</h3> 
-                   
-                    <button
-                    onClick={this.editToggle}
-                >
-                    EDIT
-                    </button>
-                <button
-                    onClick={this.deletedProblem}
-                >
-                    DELETE
-                    </button>
-                   
-                   
-                   
-                   
-                   
-                   */}
-{/* <List component="nav">
-                    <ListItem button>
-                    
-                        <ListItemText
-                            primary={this.props.problem.title}
-                        />
-                        <button
-                    onClick={this.deletedProblem}
-                >
-                    DELETE
-                    </button>
-                    </ListItem>
-                </List> */}

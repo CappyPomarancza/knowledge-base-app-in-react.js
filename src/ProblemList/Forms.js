@@ -8,6 +8,7 @@ import MyPaper from './MyPaper'
 class Forms extends React.Component {
 
     state = {
+        name : 'CAt in the HAt',
         isProblemAdded: false,
         newProblemTitle: '',
         newProblemDescription: '',
@@ -59,6 +60,11 @@ class Forms extends React.Component {
                 console.log('call back')
             })
     }
+    handleChange = name => event => {
+        this.setState({
+          [name]: event.target.value,
+        });
+      };
     render() {
         return (
             <div>
@@ -71,6 +77,7 @@ class Forms extends React.Component {
                         < div >
                             <div>
                                 <TextField
+                                    rowsMax={true}
                                     label="Problem Title"
                                     placeholder="Write Problem Title"
                                     fullWidth={true}
@@ -97,7 +104,12 @@ class Forms extends React.Component {
                                     margin='normal'
                                     value={this.newProblemDescription}
                                     onChange={this.newProblemDescriptionChangeHandler}
+                                    multiline
+                                    rowsMax="4"
                                 />
+                            </div>
+                            <div>
+                        
                             </div>
                             <div>
                                 <Button
