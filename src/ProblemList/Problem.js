@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import Divider from '@material-ui/core/Divider'
 import TextField from '@material-ui/core/TextField'
 import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'
@@ -18,11 +19,13 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import { EditorVerticalAlignTop } from 'material-ui/svg-icons'
 
 import { createMuiTheme } from '@material-ui/core/styles'
+import ProblemView from './ProblemView';
 
 
 
 class Problem extends React.Component {
     state = {
+        isShowed: false,
         isEdited: false,
         problemTitle: this.props.problem.title,
         problemKeyWords: this.props.problem.keyWords,
@@ -30,7 +33,18 @@ class Problem extends React.Component {
         problemKey: this.props.problem.key
     }
 
-
+    viewToggle = () => {
+        this.setState({
+            isShowed: true
+        })
+        console.log('test view')
+    }
+    backViewToggle = () => {
+        this.setState({
+            isShowed: false
+        })
+        console.log('test view')
+    }
 
     editToggle = () => {
         this.setState({
@@ -73,99 +87,118 @@ class Problem extends React.Component {
         return (
 
             <div>
-                {this.state.isEdited ?
-                    <div>
-                        <TextField
-                            label="New Problem Title"
-                            placeholder="Write New Problem Title"
-                            fullWidth={true}
-                            margin="normal"
-                            onChange={this.onProblemTitleChangeHandler}
-                            value={this.state.problemTitle}
-                        />
-                        <TextField
-                            label="New Problem Description"
-                            placeholder="Write New Problem Description"
-                            fullWidth={true}
-                            margin="normal"
-                            onChange={this.onProblemDescriptionChangeHandler}
-                            value={this.state.problemDescription}
-                        />
-                        <TextField
-                            label="New Problem #KeyWords"
-                            placeholder="Write New Problem #KeyWords"
-                            fullWidth={true}
-                            margin="normal"
-                            onChange={this.onProblemKeyWordsChangeHandler}
-                            value={this.state.problemKeyWords}
-                        />
+                {
+                    this.state.isShowed ?
                         <div>
-                            <Button
-
-                                variant="contained"
-                                color="primary"
-                                onClick={
-                                    () => {
-                                        this.props.onEditProblemHandler(
-                                            this.props.problem.key,
-                                            this.state.problemTitle,
-                                            this.state.problemDescription,
-                                            this.state.problemKeyWords
-                                        )
-                                        this.editToggle()
-                                    }
-                                }
-                            >
-                                <SaveIcon />
-                                SAVE CHANGES
-                        </Button>
-                            <Button
-
-                                variant="contained"
-                                color="secondary"
-                                onClick={
-                                    () => {
-                                        this.onDeleteProblemClick(this.props.problem.key)
-                                    }
-                                }
-                            >
-                                <DeleteIcon  />
-                                DELETE PROBLEM
-                        </Button>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={this.editToggle}
-
-                            >
-                                <Cancel />
-                                CANCEL
-                        </Button>
+                            <ProblemView
+                                backClickHndler={this.backViewToggle}
+                                problemTitle={this.state.problemTitle}
+                                problemKeyWords={this.state.problemKeyWords}
+                                problemDescription={this.state.problemDescription}
+                            />
+                            <Divider />
                         </div>
-                    </div>
-                    :
-                    <div>
+                        :
+                        
+                            this.state.isEdited ?
+                            <div>
+                                <TextField
+                                    label="New Problem Title"
+                                    placeholder="Write New Problem Title"
+                                    fullWidth={true}
+                                    margin="normal"
+                                    onChange={this.onProblemTitleChangeHandler}
+                                    value={this.state.problemTitle}
+                                />
+                                <TextField
+                                    label="New Problem Description"
+                                    placeholder="Write New Problem Description"
+                                    fullWidth={true}
+                                    margin="normal"
+                                    onChange={this.onProblemDescriptionChangeHandler}
+                                    value={this.state.problemDescription}
+                                />
+                                <TextField
+                                    label="New Problem #KeyWords"
+                                    placeholder="Write New Problem #KeyWords"
+                                    fullWidth={true}
+                                    margin="normal"
+                                    onChange={this.onProblemKeyWordsChangeHandler}
+                                    value={this.state.problemKeyWords}
+                                />
+                                <div>
+                                    <Button
 
-                        <div>
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={
+                                            () => {
+                                                this.props.onEditProblemHandler(
+                                                    this.props.problem.key,
+                                                    this.state.problemTitle,
+                                                    this.state.problemDescription,
+                                                    this.state.problemKeyWords
+                                                )
+                                                this.editToggle()
+                                            }
+                                        }
+                                    >
+                                        <SaveIcon />
+                                        SAVE CHANGES
+</Button>
+                                    <Button
 
-                            <h2> {this.props.problem.title}</h2>
-                            <h2>
-                                {
-                                    '#' + this.props.problem.keyWords
-                                }
-                            </h2>
+                                        variant="contained"
+                                        color="secondary"
+                                        onClick={
+                                            () => {
+                                                this.onDeleteProblemClick(this.props.problem.key)
+                                            }
+                                        }
+                                    >
+                                        <DeleteIcon />
+                                        DELETE PROBLEM
+</Button>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={this.editToggle}
 
-                        </div>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={this.editToggle}
-                            fullWidth={true}
-                        >
-                            EDIT
-                        </Button>
+                                    >
+                                        <Cancel />
+                                        CANCEL
+</Button>
+                                </div>
+                            </div>
+                            :<div>
 
-                    </div>
+                                <div>
+
+                                    <h2> {this.props.problem.title}</h2>
+                                    <h3>
+                                        {
+                                            '#' + this.props.problem.keyWords
+                                        }
+                                    </h3>
+
+                                </div>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={this.editToggle}
+                                    fullWidth={true}
+                                >
+                                    EDIT
+                    </Button>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={this.viewToggle}
+                                    fullWidth={true}
+                                >
+                                    Show
+                    </Button>
+                            </div>
                 }
             </div>
         )
