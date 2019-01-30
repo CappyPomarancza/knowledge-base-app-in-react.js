@@ -10,9 +10,10 @@ const ProblemView = props => (
       <br />
       <h3> {props.problemKeyWords}</h3>
       <br />
-      <p>   </p>
-      
-        {props.problemDescription}
+      <p> {props.problemDescription.split('\n').map((el, key) => {
+        return <div key={key}>{el}</div>
+      })}
+      </p>
       <Button
         variant="contained"
         color="primary"
