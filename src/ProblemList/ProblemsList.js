@@ -62,7 +62,7 @@ class ProblemsList extends React.Component {
     render() {
 
         const filteredProblems = this.state.problems && this.state.problems
-            .filter(problem => problem.title.indexOf(this.state.searchPhrase) !== -1)
+            .filter(problem => problem.title.toLowerCase().indexOf(this.state.searchPhrase) !== -1)
 
         return (
             <MyPaper>

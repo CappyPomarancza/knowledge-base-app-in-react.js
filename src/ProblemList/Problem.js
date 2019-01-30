@@ -32,7 +32,13 @@ class Problem extends React.Component {
         problemDescription: this.props.problem.description,
         problemKey: this.props.problem.key
     }
-
+    styles = {
+        cols: 40,
+        rows: 5,
+        width: 200,
+        height: 50,
+        name: Text
+    }
     viewToggle = () => {
         this.setState({
             isShowed: true
@@ -99,8 +105,7 @@ class Problem extends React.Component {
                             <Divider />
                         </div>
                         :
-                        
-                            this.state.isEdited ?
+                        this.state.isEdited ?
                             <div>
                                 <TextField
                                     label="New Problem Title"
@@ -111,14 +116,6 @@ class Problem extends React.Component {
                                     value={this.state.problemTitle}
                                 />
                                 <TextField
-                                    label="New Problem Description"
-                                    placeholder="Write New Problem Description"
-                                    fullWidth={true}
-                                    margin="normal"
-                                    onChange={this.onProblemDescriptionChangeHandler}
-                                    value={this.state.problemDescription}
-                                />
-                                <TextField
                                     label="New Problem #KeyWords"
                                     placeholder="Write New Problem #KeyWords"
                                     fullWidth={true}
@@ -126,6 +123,28 @@ class Problem extends React.Component {
                                     onChange={this.onProblemKeyWordsChangeHandler}
                                     value={this.state.problemKeyWords}
                                 />
+                                <TextField
+                                    id="filled-multiline-static"
+                                    label="Write New Solution"
+                                    multiline
+                                    rows="10"
+                                    defaultValue={this.state.problemDescription}
+                                    margin="normal"
+                                    fullWidth={'true'}
+                                    variant="filled"
+                                    onChange={this.onProblemDescriptionChangeHandler}
+                                    value={this.state.problemDescription}
+                                />
+                                {/* <TextField
+                                    multiline={true}
+                                    label="New Problem Description"
+                                    placeholder="Write New Problem Description"
+                                    fullWidth={true}
+                                    margin="normal"
+                                    onChange={this.onProblemDescriptionChangeHandler}
+                                    value={this.state.problemDescription}
+
+                                /> */}
                                 <div>
                                     <Button
 
@@ -145,7 +164,7 @@ class Problem extends React.Component {
                                     >
                                         <SaveIcon />
                                         SAVE CHANGES
-</Button>
+                                    </Button>
                                     <Button
 
                                         variant="contained"
@@ -158,7 +177,7 @@ class Problem extends React.Component {
                                     >
                                         <DeleteIcon />
                                         DELETE PROBLEM
-</Button>
+                                    </Button>
                                     <Button
                                         variant="contained"
                                         color="primary"
@@ -167,14 +186,13 @@ class Problem extends React.Component {
                                     >
                                         <Cancel />
                                         CANCEL
-</Button>
+                                    </Button>
                                 </div>
                             </div>
-                            :<div>
-
+                            : <div>
                                 <div>
 
-                                    <h2> {this.props.problem.title}</h2>
+                                    <h1> {this.props.problem.title}</h1>
                                     <h3>
                                         {
                                             '#' + this.props.problem.keyWords
@@ -189,7 +207,7 @@ class Problem extends React.Component {
                                     fullWidth={true}
                                 >
                                     EDIT
-                    </Button>
+                                </Button>
                                 <Button
                                     variant="contained"
                                     color="primary"
@@ -197,8 +215,8 @@ class Problem extends React.Component {
                                     fullWidth={true}
                                 >
                                     Show
-                    </Button>
-                            </div>
+                                </Button>
+                             </div>
                 }
             </div>
         )

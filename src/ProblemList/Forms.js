@@ -8,30 +8,25 @@ import MyPaper from './MyPaper'
 class Forms extends React.Component {
 
     state = {
-        name : 'CAt in the HAt',
         isProblemAdded: false,
         newProblemTitle: '',
         newProblemDescription: '',
         newProblemKeyWords: ''
     }
 
-
     newProblemTitleChangeHandler = (event) => {
-        console.log(event.target.value)
         this.setState({
             newProblemTitle: event.target.value
         })
     }
 
     newProblemKeyWordsChangeHandler = (event) => {
-        console.log(event.target.value)
         this.setState({
             newProblemKeyWords: event.target.value
         })
     }
 
     newProblemDescriptionChangeHandler = (event) => {
-        console.log(event.target.value)
         this.setState({
             newProblemDescription: event.target.value
         })
@@ -50,21 +45,15 @@ class Forms extends React.Component {
         fetch('https://todo-e8a15.firebaseio.com/cappy-problems/.json'
             , request)
             .then(response => {
-                console.log(response)
                 this.setState({
                     newProblemTitle: '',
                     newProblemDescription: '',
                     newProblemKeyWords: '',
                     isProblemAdded: true
                 })
-                console.log('call back')
             })
     }
-    handleChange = name => event => {
-        this.setState({
-          [name]: event.target.value,
-        });
-      };
+
     render() {
         return (
             <div>
@@ -84,6 +73,7 @@ class Forms extends React.Component {
                                     margin="normal"
                                     value={this.newProblemTitle}
                                     onChange={this.newProblemTitleChangeHandler}
+                                    ref='title'
                                 />
                             </div>
                             <div>
@@ -94,6 +84,7 @@ class Forms extends React.Component {
                                     margin='normal'
                                     value={this.newProblemKeyWords}
                                     onChange={this.newProblemKeyWordsChangeHandler}
+                                    ref='keyWords'
                                 />
                             </div>
                             <div>
@@ -105,11 +96,9 @@ class Forms extends React.Component {
                                     value={this.newProblemDescription}
                                     onChange={this.newProblemDescriptionChangeHandler}
                                     multiline
-                                    rowsMax="4"
+                                    rows="10"
+                                    ref='description'
                                 />
-                            </div>
-                            <div>
-                        
                             </div>
                             <div>
                                 <Button
@@ -117,6 +106,7 @@ class Forms extends React.Component {
                                     color={"primary"}
                                     fullWidth={true}
                                     onClick={this.onAddNewProblemClick}
+                                    type='submit'
                                 >
                                     Add New Problem
                             </Button>
