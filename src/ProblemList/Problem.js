@@ -49,7 +49,6 @@ class Problem extends React.Component {
         this.setState({
             isShowed: false
         })
-        console.log('test view')
     }
 
     editToggle = () => {
@@ -135,16 +134,6 @@ class Problem extends React.Component {
                                     onChange={this.onProblemDescriptionChangeHandler}
                                     value={this.state.problemDescription}
                                 />
-                                {/* <TextField
-                                    multiline={true}
-                                    label="New Problem Description"
-                                    placeholder="Write New Problem Description"
-                                    fullWidth={true}
-                                    margin="normal"
-                                    onChange={this.onProblemDescriptionChangeHandler}
-                                    value={this.state.problemDescription}
-
-                                /> */}
                                 <div>
                                     <Button
 
@@ -204,7 +193,6 @@ class Problem extends React.Component {
                                     variant="contained"
                                     color="primary"
                                     onClick={this.editToggle}
-                                    fullWidth={true}
                                 >
                                     EDIT
                                 </Button>
@@ -212,10 +200,10 @@ class Problem extends React.Component {
                                     variant="contained"
                                     color="primary"
                                     onClick={this.viewToggle}
-                                    fullWidth={true}
                                 >
                                     Show
                                 </Button>
+                                <Divider />
                              </div>
                 }
             </div>

@@ -1,16 +1,16 @@
 import React from 'react'
 import MyPaper from './MyPaper'
 import { Button } from '@material-ui/core'
-import ShowMoreText from 'react-show-more-text'
 
 const ProblemView = props => (
   <div>
     <MyPaper>
-      <h1>  {props.problemTitle} </h1>
+      <h1> Title:  {props.problemTitle} </h1>
       <br />
-      <h3> {props.problemKeyWords}</h3>
+      <h3> KeyWords: {props.problemKeyWords}</h3>
       <br />
-      <p> {props.problemDescription.split('\n').map((el, key) => {
+      <h3>Solution:</h3>
+      <p>  {props.problemDescription.split('\n').map((el, key) => {
         return <div key={key}>{el}</div>
       })}
       </p>

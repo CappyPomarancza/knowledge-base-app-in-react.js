@@ -1,5 +1,6 @@
 import React from 'react'
 import Problem from './Problem'
+import Divider from '@material-ui/core/Divider'
 
 
 const List = (props) => (
@@ -13,8 +14,11 @@ const List = (props) => (
                     onDeleteProblemClick={props.onDeleteProblemClick}
                     onEditProblemHandler={props.onEditProblemHandler}
                 />
+                
             ))
+            
         }
+        <Divider />
     </div>
 )
 

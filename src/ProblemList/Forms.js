@@ -61,7 +61,10 @@ class Forms extends React.Component {
                 >
                     {this.state.isProblemAdded ?
 
-                        <div>Your Problem was Added to base</div>
+                        <div>
+                            <p>Your Problem was Added to base</p>
+                            <p>Press F5 to add next Problem</p>
+                        </div>
                         :
                         < div >
                             <div>
