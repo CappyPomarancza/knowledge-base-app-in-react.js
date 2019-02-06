@@ -9,6 +9,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import NavigationIcon from '@material-ui/icons/Navigation'
 import SaveIcon from '@material-ui/icons/Save'
 import Cancel from '@material-ui/icons/Cancel'
+import Checkbox from './Checkbox'
 
 
 
@@ -187,7 +188,7 @@ class Problem extends React.Component {
                                             '#' + this.props.problem.keyWords
                                         }
                                     </h3>
-
+                                        <Checkbox />
                                 </div>
                                 <Button
                                     variant="contained"
