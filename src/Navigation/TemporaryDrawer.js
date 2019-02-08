@@ -5,8 +5,6 @@ import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
 import SideBarItem from './SideBarItem'
 import ButtonAppBar from './ButtonAppBar'
 
@@ -69,11 +67,11 @@ class TemporaryDrawer extends React.Component {
                   label={'Add New Problem'}
                   toggleSideBar={this.props.toggleSideBar}
                 />
-                <SideBarItem
+                {/* <SideBarItem
                   to={'/favourites'}
                   label={'Favourite Problems'}
                   toggleSideBar={this.props.toggleSideBar}
-                />
+                /> */}
               </List>
               <Divider />
             </div>

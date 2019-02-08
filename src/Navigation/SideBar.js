@@ -21,11 +21,11 @@ class SideBar extends React.Component {
                     label={'Add New Problem'}
                     toggleSideBar={this.props.toggleSideBar}
                 />
-                <SideBarItem
+                {/* <SideBarItem
                     to={'/favourite'}
                     label={'Add New Problem'}
                     toggleSideBar={this.props.toggleSideBar}
-                />
+                /> */}
                 
             </Drawer>
         )
