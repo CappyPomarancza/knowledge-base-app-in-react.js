@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField'
 import DeleteIcon from '@material-ui/icons/Delete'
 import SaveIcon from '@material-ui/icons/Save'
 import Cancel from '@material-ui/icons/Cancel'
-import Checkbox from './Checkbox'
 
 import ProblemView from './ProblemView';
 
@@ -175,7 +174,7 @@ class Problem extends React.Component {
                                             '#' + this.props.problem.keyWords
                                         }
                                     </h3>
-                                        <Checkbox />
+                                      
                                 </div>
                                 <Button
                                     variant="contained"
