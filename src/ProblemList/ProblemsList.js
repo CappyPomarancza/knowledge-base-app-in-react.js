@@ -64,6 +64,15 @@ class ProblemsList extends React.Component {
         const filteredProblems = this.state.problems && this.state.problems
             .filter(problem => problem.title.toLowerCase().indexOf(this.state.searchPhrase) !== -1)
 
+        const filteredProblemsByDescription = this.state.problems && this.state.problems
+            .filter(problem => problem.description.toLowerCase().indexOf(this.state.searchPhrase) !== -1)
+
+            const concatProblems = filteredProblems ? filteredProblems : filteredProblemsByDescription
+            
+
+        console.log(filteredProblems)
+        console.log(filteredProblemsByDescription)
+        console.log(concatProblems)
         return (
             <MyPaper>
                 {
@@ -75,10 +84,12 @@ class ProblemsList extends React.Component {
                                 <Search
                                     searchPhrase={this.state.searchPhrase}
                                     onSearchPhraseChanged={this.onSearchPhraseChanged}
+                                    placeholder={'What You looking for'}
+                                    label={'Search'}
                                 />
                                 <List
                                     onEditProblemHandler={this.onEditProblemHandler}
-                                    problems={filteredProblems}
+                                    problems={concatProblems }
                                 />
                             </div>
                             :

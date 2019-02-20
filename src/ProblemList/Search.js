@@ -2,8 +2,8 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField'
 const Search = (props) => (
     <TextField
-    label="Search"
-        placeholder={'Search'}
+    label={props.label}
+        placeholder={props.placeholder}
         fullWidth={true}
         margin='normal'
         value={props.searchPhrase}
