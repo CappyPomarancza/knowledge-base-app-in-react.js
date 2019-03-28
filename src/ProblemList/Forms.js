@@ -54,6 +54,12 @@ class Forms extends React.Component {
             })
     }
 
+    onAddNextProblemClick = () => {
+        this.setState({
+            isProblemAdded: false
+        })
+    }
+
     render() {
         return (
             <div>
@@ -63,7 +69,15 @@ class Forms extends React.Component {
 
                         <div>
                             <p>Your Problem was Added to base</p>
-                            <p>Press F5 to add next Problem</p>
+                            <Button
+                                variant={"contained"}
+                                color={"primary"}
+                                //fullWidth={true}
+                                onClick={this.onAddNextProblemClick}
+                                type='submit'
+                            >
+                                Add Next Problem
+                            </Button>
                         </div>
                         :
                         < div >
